@@ -15,7 +15,7 @@ export const siteConfig: SiteConfig = {
 	themeVersion: "V4.3.0",
 
 	// 站点 URL
-	site_url: "https://example.com",
+	site_url: "https://kiranoray.github.io",
 
 	// 站点描述
 	description:
