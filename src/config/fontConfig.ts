@@ -28,30 +28,43 @@ import type { FontDefinition, FontSelectionConfig } from "@/types/fontConfig";
 // 本地开发调试的情况下，修改后需要每次重启开发服务器才能生效
 export const fontsList: FontDefinition[] = [
 	{
+		// 20261106 改为本地字体文件：fontsource 远程源指向 cdn.jsdelivr.net，
+		// 本地与 CI 环境无法稳定访问，改用自托管后构建零网络依赖。
 		name: "Zen Maru Gothic",
 		cssVariable: "--font-zen-maru-gothic",
-		provider: "fontsource",
-		weights: ["300", "400", "500", "600", "700"],
-		styles: ["normal"],
-		subsets: ["latin", "cyrillic"],
+		provider: "local",
+		options: {
+			variants: [
+				{ src: ["./public/assets/fonts/zen-maru-gothic-latin-300.woff2"], weight: "300" },
+				{ src: ["./public/assets/fonts/zen-maru-gothic-latin-400.woff2"], weight: "400" },
+				{ src: ["./public/assets/fonts/zen-maru-gothic-latin-500.woff2"], weight: "500" },
+				{ src: ["./public/assets/fonts/zen-maru-gothic-latin-700.woff2"], weight: "700" },
+			],
+		},
 		fallbacks: ["sans-serif"],
 	},
 	{
 		name: "Inter",
 		cssVariable: "--font-inter",
-		provider: "fontsource",
-		weights: ["300", "400", "500", "600", "700"],
-		styles: ["normal"],
-		subsets: ["latin", "cyrillic"],
+		provider: "local",
+		options: {
+			variants: [
+				// 可变字体，weight 范围 100-900
+				{ src: ["./public/assets/fonts/inter-latin-wght.woff2"], weight: "100 900" },
+			],
+		},
 		fallbacks: ["sans-serif"],
 	},
 	{
 		name: "JetBrains Mono",
 		cssVariable: "--font-jetbrains-mono",
-		provider: "fontsource",
-		weights: ["400", "700"],
-		styles: ["normal"],
-		subsets: ["latin", "cyrillic"],
+		provider: "local",
+		options: {
+			variants: [
+				// 可变字体，weight 范围 100-800
+				{ src: ["./public/assets/fonts/jetbrains-mono-latin-wght.woff2"], weight: "100 800" },
+			],
+		},
 		fallbacks: [
 			"ui-monospace",
 			"SFMono-Regular",
