@@ -34,9 +34,6 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		],
 	});
 
-	// 站点统计
-	links.push(LinkPresets.Analytics);
-
 	// 友链
 	links.push(LinkPresets.Friends);
 
@@ -92,8 +89,12 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		],
 	});
 
+	// 站点统计（Umami 部署后再取消注释）
+	// links.push(LinkPresets.Analytics);
+
+	// 20261106 关闭开往的导航栏
 	// 开往：独立博客友链接力，放在“关于”右侧
-	links.push(LinkPresets.Travellings);
+	// links.push(LinkPresets.Travellings);
 
 	// 文档链接
 	// links.push({
@@ -121,12 +122,13 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		url: "/",
 		icon: "material-symbols:home",
 	},
-	Travellings: {
-		name: "开往",
-		url: "https://www.travellings.cn/go.html",
-		external: true,
-		iconImage: "https://www.travellings.cn/assets/travelling.png",
-	},
+	// 20261106 关闭开往的导航栏
+	// Travellings: {
+	// 	name: "开往",
+	// 	url: "https://www.travellings.cn/go.html",
+	// 	external: true,
+	// 	iconImage: "https://www.travellings.cn/assets/travelling.png",
+	// },
 	Archive: {
 		name: "归档",
 		url: "/archive/",
@@ -143,11 +145,11 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		icon: "material-symbols:tag-rounded",
 	},
 	Tools: {
-		name: "工具",
+		name: "项目",
 		url: "/tools/",
 		icon: "material-symbols:construction-rounded",
 	},
-	Changelog: {
+	Changelog: {	
 		name: "项目更新日志",
 		url: "/changelog/",
 		icon: "material-symbols:history-edu-rounded",
@@ -162,6 +164,7 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		name: "朋友圈",
 		url: "/moments/",
 		icon: "material-symbols:rss-feed-rounded",
+		pageKey: "moments",
 	},
 	Sponsor: {
 		name: "打赏",
@@ -211,6 +214,7 @@ export const LinkPresets: Record<string, NavBarLink> = {
 		name: "账单",
 		url: "/bills/",
 		icon: "material-symbols:receipt-long-rounded",
+		pageKey: "bills",
 	},
 	Anime: {
 		name: "追番",

@@ -3,28 +3,17 @@ import type { BackgroundWallpaperConfig } from "@/types/backgroundWallpaper";
 export const homepageWallpaper = "/assets/images/wallpaper/homepage-anniversary-fireworks-20260930.webp";
 export const alternateHomepageWallpaper = "/assets/images/wallpaper/homepage-anniversary-blossoms.webp";
 export const mobileHomepageWallpaper = "/assets/images/wallpaper/homepage-anniversary-mobile-20260930.webp";
-const originalWallpaperImages = Array.from(
-	{ length: 24 },
+// 横屏壁纸 21 张：public/assets/images/wallpaper/wallpaper-01..21.webp
+// （20261106 由鸣潮系列 25..47 缺 31/33 重命名为连续编号 01..21，thumbs 同步）
+const wallpaperImages = Array.from(
+	{ length: 21 },
 	(_, index) =>
 		`/assets/images/wallpaper/wallpaper-${String(index + 1).padStart(2, "0")}.webp`,
 );
-
-const importedWutheringWavesImages = Array.from(
-	{ length: 23 },
-	(_, index) =>
-		`/assets/images/wallpaper/wallpaper-${String(index + 25).padStart(2, "0")}.webp`,
-);
-
-const wutheringWavesWallpaperImages = [
-	originalWallpaperImages[0],
-	...importedWutheringWavesImages,
-];
-const otherWallpaperImages = originalWallpaperImages.slice(1);
 const desktopWallpaperImages = [
 	homepageWallpaper,
 	alternateHomepageWallpaper,
-	...wutheringWavesWallpaperImages,
-	...otherWallpaperImages,
+	...wallpaperImages,
 ];
 
 const mobileOnlyWutheringWavesImages = Array.from(
@@ -33,19 +22,18 @@ const mobileOnlyWutheringWavesImages = Array.from(
 		`/assets/images/wallpaper/wallpaper-mobile-${String(index + 1).padStart(2, "0")}.webp`,
 );
 const mobileWallpaperImages = [
- mobileHomepageWallpaper,
- ...mobileOnlyWutheringWavesImages,
-	...wutheringWavesWallpaperImages,
-	...otherWallpaperImages,
+	mobileHomepageWallpaper,
+	...mobileOnlyWutheringWavesImages,
+	...wallpaperImages,
 ];
 
 export const backgroundWallpaper: BackgroundWallpaperConfig = {
 	// 壁纸模式："banner" 横幅壁纸，"fullscreen" 全屏壁纸，"overlay" 全屏透明，"none" 纯色背景无壁纸
-	mode: "fullscreen",
+	mode: "banner", // 20261106 去掉home-sticker的展示方式
 	// 是否允许用户通过导航栏切换壁纸模式
 	// 且同时维护多种壁纸模式过于复杂（已经屎山代码），在切换时有时候可能会出现一些奇怪的过渡效果或者bug
 	// 推荐只选择自己喜欢的模式并关闭切换功能
-	switchable: true,
+	switchable: false, // 20261106 去掉home-sticker的展示方式
 	// 是否启用背景视频播放，配置后将在导航栏显示视频播放按钮
 	playerEnable: true,
 	/**

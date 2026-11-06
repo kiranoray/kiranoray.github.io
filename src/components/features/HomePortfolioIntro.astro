@@ -33,16 +33,21 @@ const defaultMobileBottomBanner =
 		(banner) =>
 			banner.id === homePortfolioIntroSettings.defaultMobileBottomBannerId,
 	) ?? mobileBanners.bottom[0];
-const initialStyle = initialHome
+// 开屏默认关闭时，首屏不再渲染黄色快门 boot 状态（避免 JS 接管前的闪黄）；
+// 明确开启的访客由运行时脚本进入 is-preparing / is-playing 播放状态。
+const introBootEnabled =
+	initialHome && homePortfolioIntroSettings.defaultEnabled;
+const initialStyle = introBootEnabled
 	? "position: fixed; inset: 0; z-index: 49; background: #f8e4ad;"
 	: undefined;
 ---
 
 <section
 	id="home-portfolio-intro"
-	class:list={["home-portfolio-intro", initialHome && "home-portfolio-intro--boot"]}
+	class:list={["home-portfolio-intro", introBootEnabled && "home-portfolio-intro--boot"]}
 	style={initialStyle}
 	data-enabled-storage-key={homePortfolioIntroSettings.enabledStorageKey}
+	data-default-enabled={homePortfolioIntroSettings.defaultEnabled}
 	data-character-storage-key={homePortfolioIntroSettings.characterStorageKey}
 	data-top-banner-storage-key={homePortfolioIntroSettings.topBannerStorageKey}
 	data-bottom-banner-storage-key={homePortfolioIntroSettings.bottomBannerStorageKey}

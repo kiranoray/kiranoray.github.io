@@ -5,6 +5,11 @@ import MainGridLayout from "@/layouts/MainGridLayout.astro";
 import { formatDateToYYYYMMDD } from "@/utils/date-utils";
 import { loadFriendsFeed } from "@/utils/friends-feed";
 
+// 检查页面是否启用
+if (!siteConfig.pages.moments) {
+	return Astro.redirect("/404/");
+}
+
 const friends = getEnabledFriends();
 const feed = await loadFriendsFeed(friends);
 const title = "朋友圈";

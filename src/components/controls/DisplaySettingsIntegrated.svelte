@@ -507,9 +507,10 @@ function toggleSakuraEnabled() {
 
 function getStoredIntroEnabled() {
 	try {
-		return (
-			localStorage.getItem(homePortfolioIntroSettings.enabledStorageKey) !== "0"
+		const stored = localStorage.getItem(
+			homePortfolioIntroSettings.enabledStorageKey,
 		);
+		return stored === null ? defaultIntroEnabled : stored === "1";
 	} catch {
 		return defaultIntroEnabled;
 	}

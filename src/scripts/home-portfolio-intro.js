@@ -15,6 +15,8 @@ export {};
 	const introEnabledStorageKey =
 		intro?.getAttribute("data-enabled-storage-key") ||
 		"rainzt.home-portfolio-intro-enabled.v1";
+	const introDefaultEnabled =
+		intro?.getAttribute("data-default-enabled") !== "false";
 	const introCharacterStorageKey =
 		intro?.getAttribute("data-character-storage-key") ||
 		"rainzt.home-portfolio-intro-character.v1";
@@ -61,7 +63,8 @@ export {};
 
 	const isIntroEnabled = () =>
 		document.documentElement.dataset.siteTheme !== "pure" &&
-		readLocalStorage(introEnabledStorageKey) !== "0";
+		(readLocalStorage(introEnabledStorageKey) ??
+			(introDefaultEnabled ? "1" : "0")) === "1";
 
 	const getSelectedCharacter = () => {
 		const selectedId =

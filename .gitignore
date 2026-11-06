@@ -70,3 +70,6 @@ waline/
 ops/
 .env.*
 !.env.example
+
+# Personal payment QR codes - keep out of the public repository
+public/assets/images/sponsor/

@@ -87,6 +87,8 @@ export type SiteConfig = {
 		bangumi: boolean;
 		gallery: boolean; // 相册页面开关
 		anime: boolean; // 追番页面开关
+		moments: boolean; // 朋友圈页面开关
+		bills: boolean; // 账单页面开关
 	};
 
 	// 分类导航栏开关

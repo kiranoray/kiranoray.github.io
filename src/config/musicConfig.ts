@@ -48,6 +48,14 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	// 2. 或者直接填入歌词字符串内容
 	// lrc: "[00:00.00]歌词内容...",
 	local: {
-		playlist: [],
+		playlist: [
+			{
+				name: "小小奇迹",
+				artist: "鸣潮先约电台",
+				url: "/assets/music/小小奇迹 - 鸣潮先约电台.mp3",
+				cover: "/assets/music/cover/小小奇迹.webp",
+				lrc: "/assets/music/lrc/小小奇迹 - 鸣潮先约电台.lrc",
+			},
+		],
 	},
 };

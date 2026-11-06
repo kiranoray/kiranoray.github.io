@@ -2,6 +2,6 @@ import type { SiteThemeConfig } from "@/types/siteThemeConfig";
 
 // 站点布局主题，与浅色 / 深色模式分别保存。访客选择优先于默认值。
 export const siteThemeConfig: SiteThemeConfig = {
-	enabled: true,
+	enabled: false, // 关闭主题切换（少一个导航栏占用）
 	defaultTheme: "aemeath",
 };

@@ -78,8 +78,24 @@ const aboutChangelogEntries = aboutChangelogMilestones.flatMap((milestone) => {
 
 const personalProjects: { title: string; description: string; tags: string[]; tone: string; icon: string }[] = [];
 
-const interests: string[] = [];
-const stack: string[] = [];
+const interests: string[] = [
+	"数字游民",
+	"独立开发",
+	"自动化渗透Agent",
+	"AI安全",
+	"红队攻防",
+	"逆向工程",
+];
+const stack: string[] = [
+	"Go",
+	"Java",
+	"TypeScript",
+	"React",
+	"Python",
+	"Burp Suite",
+	"Nmap",
+	"FOFA",
+];
 const serverStatusEndpoint = serviceConfig.serverStatusUrl;
 const serverStats = [
 	{
@@ -146,21 +162,22 @@ const serverStats = [
 					<p class="profile-lead">{profileConfig.bio}</p>
 					<div class="profile-status" aria-label="当前状态">
 						<span class="profile-status__dot"></span>
-						<span>请填写自己的介绍与当前状态</span>
+						<span>kira~kira~🌟</span>
 					</div>
 				</div>
 			</div>
 
 			<div class="profile-actions" aria-label="个人主页操作">
-				<a class="profile-action profile-action--primary" href="https://github.com/Jarvis0227/Aemeath" target="_blank" rel="noopener noreferrer">
+				<a class="profile-action profile-action--primary" href="https://github.com/kiranoray" target="_blank" rel="noopener noreferrer">
 					<Icon is:inline name="fa7-brands:github" aria-hidden="true" />
 					<span>查看 GitHub</span>
 					<Icon is:inline name="material-symbols:arrow-outward-rounded" aria-hidden="true" />
 				</a>
-				<a class="profile-action" href="/guestbook/">
+				<!-- 留言板页面停用后隐藏入口，恢复开关后取消注释 -->
+				<!-- <a class="profile-action" href="/guestbook/">
 					<Icon is:inline name="material-symbols:chat-bubble-outline-rounded" aria-hidden="true" />
 					<span>去留言</span>
-				</a>
+				</a> -->
 			</div>
 		</header>
 
@@ -173,7 +190,8 @@ const serverStats = [
 				<Icon is:inline name="material-symbols:history-rounded" aria-hidden="true" />
 				<span>博客日志</span>
 			</a>
-			<a class="profile-tab" href="/friends/">
+			<!-- 友链 / 朋友圈页面停用后隐藏入口，恢复开关后取消注释 -->
+			<!-- <a class="profile-tab" href="/friends/">
 				<Icon is:inline name="material-symbols:link-rounded" aria-hidden="true" />
 				<span>友链</span>
 				<em>{friendCount}</em>
@@ -181,7 +199,7 @@ const serverStats = [
 			<a class="profile-tab" href="/moments/">
 				<Icon is:inline name="material-symbols:rss-feed-rounded" aria-hidden="true" />
 				<span>朋友圈</span>
-			</a>
+			</a> -->
 		</nav>
 
 		<div class="profile-layout">
@@ -246,7 +264,6 @@ const serverStats = [
 						<Icon is:inline name="material-symbols:explore-rounded" aria-hidden="true" />
 						<h2 id="interests-title">正在关注</h2>
 					</header>
-					<p>请填写自己的兴趣和关注方向。</p>
 					<div class="chip-list">
 						{interests.map((item) => <span>{item}</span>)}
 					</div>
@@ -269,8 +286,8 @@ const serverStats = [
 						<h2 id="connect-title">保持联系</h2>
 					</header>
 					<div class="profile-connect-list">
-						<a href="https://github.com/Jarvis0227" target="_blank" rel="noopener noreferrer"><Icon is:inline name="fa7-brands:github" aria-hidden="true" /><span>GitHub</span><Icon class="profile-connect-arrow" is:inline name="material-symbols:arrow-outward-rounded" aria-hidden="true" /></a>
-						<span>请在 profileConfig.ts 中添加自己的社交链接。</span>
+						<a href="https://github.com/kiranoray" target="_blank" rel="noopener noreferrer"><Icon is:inline name="fa7-brands:github" aria-hidden="true" /><span>GitHub</span><Icon class="profile-connect-arrow" is:inline name="material-symbols:arrow-outward-rounded" aria-hidden="true" /></a>
+						<!-- <span>请在 profileConfig.ts 中添加自己的社交链接。</span> -->
 
 					</div>
 				</section>
@@ -330,8 +347,9 @@ const serverStats = [
 				<strong>如果你也在把想法变成东西，欢迎来坐坐。</strong>
 			</div>
 			<div class="profile-footer__links">
-				<a href="/friends/">认识友链 <Icon is:inline name="material-symbols:arrow-right-alt-rounded" aria-hidden="true" /></a>
-				<a href="/moments/">看看朋友圈 <Icon is:inline name="material-symbols:arrow-right-alt-rounded" aria-hidden="true" /></a>
+				<!-- 友链 / 朋友圈页面停用后隐藏入口，恢复开关后取消注释 -->
+				<!-- <a href="/friends/">认识友链 <Icon is:inline name="material-symbols:arrow-right-alt-rounded" aria-hidden="true" /></a>
+				<a href="/moments/">看看朋友圈 <Icon is:inline name="material-symbols:arrow-right-alt-rounded" aria-hidden="true" /></a> -->
 			</div>
 		</footer>
 	</section>

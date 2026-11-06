@@ -189,7 +189,7 @@ const { class: className, style } = Astro.props;
 		flex: none;
 		background-image: var(
 			--time-greeting-image,
-			url("/assets/images/wallpaper/thumbs/wallpaper-18.webp")
+			url("/assets/images/wallpaper/thumbs/wallpaper-01.webp")
 		);
 		background-position: center;
 		background-size: cover;
@@ -260,20 +260,20 @@ const { class: className, style } = Astro.props;
 		"SATURDAY",
 	];
 
-	const wutheringWavesImages = [
-		"01",
-		...Array.from({ length: 23 }, (_, index) =>
-			String(index + 25).padStart(2, "0"),
-		),
-	].map(
+	// 随机池必须与 public/assets/images/wallpaper/thumbs/ 的实际文件保持一致：
+	// 缩略图为连续编号 wallpaper-01..21.webp（20261106 重命名后）。
+	const wutheringWavesImages = Array.from({ length: 21 }, (_, index) =>
+		String(index + 1).padStart(2, "0"),
+	).map(
 		(index) =>
 			`/assets/images/wallpaper/thumbs/wallpaper-${index}.webp`,
 	);
 
-	function getRandomWutheringWavesImage(): string {
-		return wutheringWavesImages[
-			Math.floor(Math.random() * wutheringWavesImages.length)
-		];
+	function getRandomWutheringWavesImage(exclude?: string): string {
+		const pool = exclude
+			? wutheringWavesImages.filter((item) => item !== exclude)
+			: wutheringWavesImages;
+		return pool[Math.floor(Math.random() * pool.length)];
 	}
 
 	function getGreetingPeriod(hour: number): GreetingPeriod {
@@ -327,14 +327,19 @@ const { class: className, style } = Astro.props;
 			if (this.imageInitialized) return;
 			this.imageInitialized = true;
 
-			const imageUrl = getRandomWutheringWavesImage();
-			const image = new Image();
-			image.onload = () => this.setLandscapeImage(imageUrl);
-			image.onerror = () =>
-				this.setLandscapeImage(
-					"/assets/images/wallpaper/thumbs/wallpaper-01.webp",
-				);
-			image.src = imageUrl;
+			const attempt = (exclude?: string, failures = 0) => {
+				const imageUrl = getRandomWutheringWavesImage(exclude);
+				const image = new Image();
+				image.onload = () => this.setLandscapeImage(imageUrl);
+				image.onerror = () => {
+					// 换一张重试；全部失败时保持 CSS 兜底图，不把死链写进 background-image
+					if (failures + 1 < wutheringWavesImages.length) {
+						attempt(imageUrl, failures + 1);
+					}
+				};
+				image.src = imageUrl;
+			};
+			attempt();
 		}
 
 		private setLandscapeImage(url: string) {

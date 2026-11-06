@@ -11,6 +11,11 @@ import billSummary from "@/data/billsSummary.json";
 import MainGridLayout from "@/layouts/MainGridLayout.astro";
 import { getCalendarObservances } from "@/utils/calendar-observances";
 
+// 检查页面是否启用
+if (!siteConfig.pages.bills) {
+	return Astro.redirect("/404/");
+}
+
 const latestKey = billSummary.latestMonth;
 const monthlySummary =
 	billSummary.months.find((item) => item.key === latestKey) ??

@@ -9,8 +9,9 @@ export const homePortfolioIntroSettings = {
 	characterStorageKey: "rainzt.home-portfolio-intro-character.v1",
 	topBannerStorageKey: "rainzt.home-portfolio-intro-top-banner.v1",
 	bottomBannerStorageKey: "rainzt.home-portfolio-intro-bottom-banner.v1",
-	defaultEnabled: true,
-	defaultCharacterId: "character-03",
+	// 默认是否播放开屏动画；false = 默认关闭，访客仍可在显示设置中自行开启
+	defaultEnabled: false,
+	defaultCharacterId: "character-02",
 	defaultTopBannerId: "wuthering",
 	defaultBottomBannerId: "wuthering",
 	defaultMobileTopBannerId: "wuthering",
