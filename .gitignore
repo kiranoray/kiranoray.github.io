@@ -73,3 +73,8 @@ ops/
 
 # Personal payment QR codes - keep out of the public repository
 public/assets/images/sponsor/
+
+# Local maintenance notes (not published)
+MAINTENANCE.md
+BLOG-SYNTAX.md
+src/content/posts/test.md

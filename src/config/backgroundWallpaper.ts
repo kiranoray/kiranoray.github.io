@@ -86,9 +86,9 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 		// 主页横幅文字
 		homeText: {
 			// 是否启用主页横幅文字
-			enable: true,
+			enable: false,
 			// 是否允许用户通过控制面板切换横幅标题显示
-			switchable: true,
+			switchable: false,
 			// 主页横幅主标题
 			title: "物物而不物于物，念念而不念于念；",
 			// 主页横幅主标题字体大小
